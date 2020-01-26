@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/style/style.css">
+	<title>Tinder | Match. Chat. Date.</title>
+</head>
+
+<body>
+
+	<div id="slider-wrapper">
+		<div id="slider-slideshow">
+			<div class="slider-slideshow__item">
+				<picture>
+					<img src="http://unsplash.it/id/898/1920/1080" alt="slider">
+				</picture>
+			</div>
+
+			<div class="slider-slideshow__item">
+				<picture>
+					<img src="http://unsplash.it/id/398/1920/1080" alt="slider">
+				</picture>
+			</div>
+
+			<div class="slider-slideshow__item">
+				<picture>
+					<img src="http://unsplash.it/id/698/1920/1080" alt="slider">
+				</picture>
+			</div>
+			<div class="slider-slideshow__item">
+				<picture>
+					<img src="http://unsplash.it/id/598/1920/1080" alt="slider">
+				</picture>
+			</div>
+		</div>
+
+		<!-- slideshow indicators -->
+		<div id="vanilla-indicators"></div>
+
+		<!-- slideshow arrows -->
+		<div id="slider-slideshow__previous">
+			<img src="images/arrow-previous.png" alt="slider arrow">
+		</div>
+		<div id="slider-slideshow__next">
+			<img src="images/arrow-next.png" alt="slider arrow">
+		</div>
+
+	</div>
+
+
+	<script src="assets/script/main.js"></script>
+	<script>
+		mainSlider.init({
+			slideshow: true,
+			delay: 5000,
+			arrows: false,
+			indicators: false,
+			random: false,
+			animationSpeed: '1s'
+		});
+	</script>
+
+</body>
+
+</html>
