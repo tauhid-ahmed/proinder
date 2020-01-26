@@ -537,9 +537,132 @@ html, body {
   font-weight: 600;
   color: #fff;
 }
-.headline--800 {
+.headline--w8 {
   font-weight: 800;
 }
 .headline--1 {
   font-size: 8vw;
+}
+
+.page-header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  transition: background 300ms;
+}
+.page-header::before {
+  content: "";
+  width: calc(100% - 85px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: block;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+.page-header--bg {
+  background: #fff;
+}
+.page-header__inner {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 auto;
+  align-items: center;
+}
+.page-header__menu-key {
+  width: 5rem;
+  padding: 0.625rem 0.75rem;
+  position: relative;
+  margin-left: 5px;
+}
+.page-header__menu-icon {
+  display: none;
+  top: 0;
+  width: 100%;
+}
+.page-header__menu-icon.active {
+  display: inline-block;
+}
+
+.page-logo {
+  margin-left: 5%;
+  display: inline-block;
+}
+
+.svg-wrapper {
+  width: 8.125rem;
+}
+
+.svg-gfx {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.btn-container {
+  position: relative;
+}
+.btn-container--mr30 {
+  margin-right: 1.875rem;
+}
+
+.btn {
+  color: #FE3775;
+  font-family: "montserrat";
+  font-size: 1rem;
+  display: inline-block;
+  background: #fff;
+  padding: 0.5625rem 0.9375rem;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+.btn--a-unstyle {
+  text-decoration: none;
+}
+.btn--b-unstyle {
+  border: 0;
+}
+.btn--transparent {
+  background: transparent;
+}
+.btn--uppercase {
+  text-transform: uppercase;
+}
+.btn--login {
+  transition: 300ms;
+  font-weight: 600;
+}
+.btn--login:hover {
+  background: #FE3775;
+  color: #fff;
+}
+
+.primary-nav {
+  width: 100%;
+  min-height: 60vh;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: visibility 300ms, opacity 300ms, transform 10ms;
+  transition-timing-function: linear;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0px);
+}
+.primary-nav.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }

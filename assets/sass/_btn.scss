@@ -1,0 +1,46 @@
+.btn-container {
+  position: relative;
+  
+  &--mr30 {
+    margin-right: rem(30px);
+  }
+}
+
+.btn {
+  color: $color-primary;
+  font-family: $font-family-1;
+  font-size: 1rem;
+  display: inline-block;
+  background: $color-bg-light;
+  padding: rem(9px) rem(15px);
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+
+  &--a-unstyle {
+    text-decoration: none;
+  }
+
+  &--b-unstyle {
+    border: 0;
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
+  &--login {
+    transition: 300ms;
+    font-weight: 600;
+
+    &:hover {
+      background: $color-primary;
+      color: $color-light;
+    }
+  }
+}

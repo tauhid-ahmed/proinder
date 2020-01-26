@@ -241,3 +241,39 @@ var mainSlider = (function() {
 	return app;
 
 }(mainSlider));
+
+
+
+// menu btn cross collapse
+
+
+(function() {
+	var menuBtn = document.querySelector(".page-header__menu-key");
+	var menuP = menuBtn.parentElement;
+	var iconO = menuBtn.querySelector(".page-header__menu-icon:nth-child(1)");
+	var icon2 = menuBtn.querySelector(".page-header__menu-icon:nth-child(2)");
+	var primaryNav = document.querySelector(".primary-nav");
+
+	menuBtn.addEventListener("click", function() {
+		
+		if(primaryNav.classList.contains("active")) {
+			primaryNav.classList.remove("active");
+		} else {
+			primaryNav.classList.add("active");
+		}
+
+		if(menuP.classList.contains("page-header--bg")) {
+			menuP.classList.remove("page-header--bg");
+		} else {
+			menuP.classList.add("page-header--bg");
+		}
+
+		if(iconO.classList.contains("active")) {
+			iconO.classList.remove("active");
+			icon2.classList.add("active");
+		} else {
+			iconO.classList.add("active");
+			icon2.classList.remove("active");
+		}
+	})
+})();

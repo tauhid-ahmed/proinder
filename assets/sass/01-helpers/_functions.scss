@@ -1,0 +1,180 @@
+//=======Floating-Point Number Increaser Decreaser======//
+@function floating-num($number, $digits: 6) {
+  $keeper: 1;
+  @for $i from 1 through $digits {
+    $keeper: $keeper * 10;
+  }
+  @return round($number * $keeper) / $keeper;
+}
+
+// ===========PX to REM Converter============//
+@function rem($target, $context: 16px) {
+  @if unitless($target) {
+    $target: $target * 1px;
+  }
+  @if unitless($context) {
+    $target: $target * 1px;
+  }
+  @return $target / $context * 1rem;
+}
+
+//===========PX to EM Converter============//
+@function em($target, $context: 16px) {
+  @if unitless($target) {
+    $target: $target * 1px;
+  }
+  @if unitless($context) {
+    $target: $target * 1px;
+  }
+  @return $target / $context * 1em;
+}
+
+//===========Photoshop Letter-Spacing to CSS Letter-Spacing Function.============//
+//  The default output is in em unit.
+//  Value of the first argument must be unitless, just pass the actual number from photoshop even though that is a negative number.
+//  To get em based letter-spacing pass "em" and for px based just pass "px" to the second argument. 
+//  The default value for the third argument is 16px that is global, replace it with the photoshop font-size in px;
+
+@function ls($value, $unit: em, $context: 16px) {
+  $context: strip-unit($context);
+  // $unit: unquote($unit);
+  @if $unit == "px" {
+    @return ($value * $context) / 1000 * 1px;
+  }
+  @else if $unit == "em" {
+    @return ($value) / 1000 * 1em;
+  }
+  @else {
+    @return null;
+  }
+}
+
+// ==========Make Numbers Unitless Function============//
+// Pass any number to turn itself into pure number without any unit.
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function calc-fluid-type($min-screen, $min-value, $max-screen, $max-value) {
+	$a: ($max-value - $min-value) / ($max-screen - $min-screen);
+	$b: $min-value - $a * $min-screen; 
+
+	$sign: "+";
+	@if ($b < 0) {
+		$sign: "-";
+		$b: abs($b);
+	}
+	@return calc(#{$a*100}vw #{$sign} #{$b});
+}
+
+// ===========Unitless Line Height Function============//
+// Pass font size and line-height in px to get the actual line-height.
+@function leading($font-size, $line-height: $font-size) {
+  $line-height: $line-height / $font-size;
+  @return $line-height;
+}
+
+// Get colors
+
+@function color($color, $tone: "base") {
+  @if map-has-key($colors, $color) {
+      @return map-get(map-get($colors, $color), $tone);
+  }
+}
+
+
+
+
+// map-merge
+
+@function map-collect($maps...) {
+  $collection: ();
+  @each $map in $maps {
+    @if type-of($map) == "map" {
+      $collection: map-merge($collection, $map);
+    }
+  }
+  @return $collection;
+}
+
+
+// @function gutter($font, $lead, $size, $unit: "rem") {
+//   $font: strip-unit($font);
+//   $lead: strip-unit($lead);
+//   $size: strip-unit($size);
+//   $leading: null;
+//   $calc-size: null;
+
+//   @if $lead <= 5 {
+//     $leading: (($font * $lead) - $font) / 2;
+//     $calc-size: $size - $leading;
+//   } @else {
+//     $leading: $size - (($lead - $font) / 2);
+//     $calc-size: $leading;
+//   }
+
+//   @if $unit == "rem" {
+//     @return rem($calc-size);
+//   } @else if $unit == "em" {
+//     @return em($calc-size);
+//   } @else {
+//     @return $calc-size * 1px;
+//   }
+// }
+
+
+
+
+
+@function gutter($font, $lead, $size, $unit: "rem") {
+  $leading-main: null;
+  $leading-sec: null;
+  $result: null;
+  @if length($font) == 2 and length($lead) == 2 {
+    $font-main: strip-unit(nth($font, 1));
+    $font-sec: strip-unit(nth($font, 2));
+    $lead-main: strip-unit(nth($lead, 1));
+    $lead-sec: strip-unit(nth($lead, 2));
+    $size: strip-unit($size);
+  
+    @if nth($lead, 1) <= 5 {
+      $leading-main: (($font-main * $lead-main) - $font-main) / 2;
+      $leading-sec: (($font-sec * $lead-sec) - $font-sec) / 2;
+      $result: $size - ($leading-main + $leading-sec);
+    } @else {
+      $leading-main: $size - (($lead - $font) / 2);
+      $result: $leading-main;
+    }
+  
+    @if $unit == "rem" {
+      @return rem($result);
+    } @else if $unit == "em" {
+      @return em($result, nth($font, 1));
+    } @else  {
+      @return $result * 1px;
+    }
+  } @else {
+    $font-main: strip-unit($font);
+    $lead-main: strip-unit($lead);
+    $size: strip-unit($size);
+
+    @if $lead <= 5 {
+      $leading-main: (($font-main * $lead-main) - $font-main) / 2;
+      $result: $size - $leading-main;
+    } @else {
+      $leading-main: $size - (($lead-main - $font-main) / 2);
+      $result: $leading-main;
+    }
+
+    @if $unit == "rem" {
+      @return rem($result);
+    } @else if $unit == "em" {
+      @return em($result);
+    } @else {
+      @return $result * 1px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.primary-nav {
+  width: 100%;
+  min-height: 60vh;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: visibility 300ms, opacity 300ms, transform 10ms;
+  transition-timing-function: linear;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0px);
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

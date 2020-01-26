@@ -1,10 +1,10 @@
 .headline {
-  font-family: "montserrat";
+  font-family: $font-family-1;
   font-weight: normal;
   font-weight: 600;
   color: #fff;
 
-  &--800 {
+  &--w8 {
     font-weight: 800;
   }
 
