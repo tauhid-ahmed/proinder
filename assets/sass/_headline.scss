@@ -1,0 +1,14 @@
+.headline {
+  font-family: "montserrat";
+  font-weight: normal;
+  font-weight: 600;
+  color: #fff;
+
+  &--800 {
+    font-weight: 800;
+  }
+
+  &--1 {
+    font-size: 8vw;
+  }
+}

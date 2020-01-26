@@ -1,0 +1,12 @@
+.main-hero {
+  position: relative;
+
+  &__content {
+    position: absolute;
+    width: 100%;
+    top: 15%;
+    left: 0;
+    text-align: center;
+    z-index: 111;
+  }
+}
