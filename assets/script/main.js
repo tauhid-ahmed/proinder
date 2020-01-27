@@ -1,4 +1,5 @@
 
+	
 var mainSlider = (function() {
 	
 	var app = {};
@@ -277,3 +278,47 @@ var mainSlider = (function() {
 		}
 	})
 })();
+
+
+
+// form popup 
+
+(function() {
+
+let formControl = document.querySelector(".form-control");
+let formOverlay = document.querySelector(".form-control-overlay");
+	
+document.getElementById('user-button').addEventListener("click", function() {
+	if(formControl.classList.contains("form-control--active")) {
+		formControl.classList.remove("form-control--active");
+	} else {
+		formControl.classList.add("form-control--active");
+	}
+	if(formOverlay.classList.contains("active")) {
+		formOverlay.classList.remove("active");
+	} else {
+		formOverlay.classList.add("active");
+	}
+});
+
+// document.querySelector('.from-control__close').addEventListener("click", function() {
+// 	if(formControl.classList.contains("form-control--active")) {
+// 		formControl.classList.remove("form-control--active");
+// 	}
+// });
+
+
+const signUpButton = document.getElementById('form-control-signUp');
+    const signInButton = document.getElementById('form-control-signIn');
+    const container = document.getElementById('form-control__contents');
+
+    signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+
+})();
+
