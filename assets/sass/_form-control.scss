@@ -23,7 +23,6 @@
 }
 
 .form-control {
-  z-index: 292;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -31,8 +30,10 @@
   transition: transform 200ms, visibility 200ms, opacity 200ms;
   visibility: hidden;
   opacity: 0;
-
+  z-index: 0;
+  
   &--active {
+    z-index: 292;
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
